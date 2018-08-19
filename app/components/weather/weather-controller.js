@@ -3,6 +3,8 @@ import WeatherService from "./weather-service.js";
 var weatherService = new WeatherService()
 
 
+
+
 export default class WeatherController {
 
 	constructor() {
@@ -11,8 +13,15 @@ export default class WeatherController {
 	}
 	getWeather() {
 		weatherService.getWeather(weather => {
-			console.log(weather);
+			document.getElementById("weather").innerHTML = `
+			<h2>${weather.name}</h2>
+			<p> ${weather.main.temp}</p>
+			`
+
+			console.log("here is the weatherController", weather);
 			//What can you do with this weather object?
+
+			
 		})
 	}
 }

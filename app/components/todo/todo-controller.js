@@ -1,26 +1,39 @@
 import TodoService from "./todo-service.js";
+import Todo from "../../models/todo.js";
 
 
 
 var todoService = new TodoService
 
 // Use this getTodos function as your callback for all other edits
-function getTodos() {
+function requestTodos() {
 	//FYI DONT EDIT ME :)
 	todoService.getTodos(draw)
 }
 
 function draw(todos) {
+	console.log(todos)
 	//WHAT IS MY PURPOSE?
 	//BUILD YOUR TODO TEMPLATE HERE
-	var template = ''
+	let template = ''
 	//DONT FORGET TO LOOP
+	for (let i = 0; i < todos.length; i++) {
+		const list = todos[i];
+		template += `
+		<div style="outline: 1px solid red">
+		<h4>${list.description}</h4>
+		</div>
+		`
+	}
+	document.getElementById("todo").innerHTML = template
 }
 
 
 export default class TodoController {
 	constructor() {
 		// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
+		requestTodos()
+
 	}
 	// You will need four methods
 	// getTodos should request your api/todos and give an array of todos to your callback fn
@@ -31,18 +44,25 @@ export default class TodoController {
 
 
 	addTodoFromForm(e) {
-		e.preventDefault() // <-- hey this time its a freebie don't forget this
-		// TAKE THE INFORMATION FROM THE FORM
-		var form = e.target
-		var todo = {
+		{
+			e.preventDefault() // <-- hey this time its a freebie don't forget this
+			// TAKE THE INFORMATION FROM THE FORM
+			let form = e.target
+			// var newTodo =  {
+			// 	description: form.description.value
+			// }
 			// DONT FORGET TO BUILD YOUR TODO OBJECT
+			
+			//PASSES THE NEW TODO TO YOUR SERVICE
+			//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
+			//YOU SHOULDN'T NEED TO CHANGE THIS
+			todoService.addTodo(form)
+			//^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
+			form.reset()
 		}
+		console.log("todo debug")
+		requestTodos()
 
-		//PASSES THE NEW TODO TO YOUR SERVICE
-		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
-		//YOU SHOULDN'T NEED TO CHANGE THIS
-		todoService.addTodo(todo, getTodos)
-		//^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
 	}
 
 	toggleTodoStatus(todoId) {

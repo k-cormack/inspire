@@ -1,0 +1,15 @@
+.body, html {
+    margin: 0;
+    padding: 0;
+    color: aliceblue;
+    text-shadow: black 0.1em 0.1em 0.2em
+}
+
+.background {
+    min-height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1
+}
