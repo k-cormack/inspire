@@ -19,12 +19,22 @@ function draw(todos) {
 	//DONT FORGET TO LOOP
 	for (let i = 0; i < todos.length; i++) {
 		const list = todos[i];
-		template += `
-		<div style="outline: 1px solid red">
-		<h4>${list.description}</h4>
-		<button name="delete" onclick="app.controllers.todoController.removeTodo('${list._id}')">Delete</button>
-		</div>
-		`
+		if (list.completed == false){
+			template += `
+			<div style="outline: 1px solid red">
+			<h4>${list.description}</h4><input type=checkbox id="checkbox" onclick="app.controllers.todoController.toggleTodoStatus('${list._id}', true)"><span>Completed</span>
+			<button name="delete" onclick="app.controllers.todoController.removeTodo('${list._id}')">Delete</button>
+			</div>
+			`
+		}
+		else {
+			template += `
+			<div style="outline: 1px solid red">
+			<h4 class="completed">${list.description}</h4><input type=checkbox id="checkbox" checked onclick="app.controllers.todoController.toggleTodoStatus('${list._id}', false)"><span>Completed</span>
+			<button name="delete" onclick="app.controllers.todoController.removeTodo('${list._id}')">Delete</button>
+			</div>
+			`
+		}
 	}
 	document.getElementById("todo").innerHTML = template
 }
@@ -45,39 +55,39 @@ export default class TodoController {
 
 
 	addTodoFromForm(e) {
-		{
-			e.preventDefault() // <-- hey this time its a freebie don't forget this
-			// TAKE THE INFORMATION FROM THE FORM
-			let form = e.target
-			// var newTodo =  {
-			// 	description: form.description.value
-			// }
-			// DONT FORGET TO BUILD YOUR TODO OBJECT
-			
-			//PASSES THE NEW TODO TO YOUR SERVICE
-			//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
-			//YOU SHOULDN'T NEED TO CHANGE THIS
-			todoService.addTodo(form)
-			//^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
-			form.reset()
-		}
+		e.preventDefault() // <-- hey this time its a freebie don't forget this
+		// TAKE THE INFORMATION FROM THE FORM
+		let form = e.target
+		// var newTodo =  {
+		// 	description: form.description.value
+		// }
+		// DONT FORGET TO BUILD YOUR TODO OBJECT
+
+		//PASSES THE NEW TODO TO YOUR SERVICE
+		//DON'T FORGET TO REDRAW THE SCREEN WITH THE NEW TODO
+		//YOU SHOULDN'T NEED TO CHANGE THIS
+		todoService.addTodo(form, requestTodos)
+		//^^^^^^^ EXAMPLE OF HOW TO GET YOUR TOODOS AFTER AN EDIT
+		form.reset()
+
 		console.log("todo debug")
-		requestTodos()
 
 	}
 
-	toggleTodoStatus(todoId) {
+	toggleTodoStatus(todoId, value) {
+		// todoId.preventDefault()
 		// asks the service to edit the todo status
-		todoService.toggleTodoStatus(todoId, getTodos)
+		todoService.toggleTodoStatus(todoId, value, requestTodos)
 		// YEP THATS IT FOR ME
 	}
 
 	removeTodo(todoId) {
+		// todoId.preventDefault()
 		// ask the service to run the remove todo with this id
-		
+
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
-		console.log("remove Todo request")
-		todoService.removeTodo(todoId)
-		
+		// console.log("remove Todo request")
+		todoService.removeTodo(todoId, requestTodos)
+
 	}
 }

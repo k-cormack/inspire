@@ -3,7 +3,7 @@ import Todo from "../../models/todo.js"
 
 // @ts-ignore
 const todoApi = axios.create({
-	baseURL: 'https://bcw-sandbox.herokuapp.com/api/YOURNAME/todos/',
+	baseURL: 'https://bcw-sandbox.herokuapp.com/api/KeithC/todos/',
 	timeout: 3000
 });
 
@@ -31,7 +31,7 @@ export default class TodoService {
 			.catch(logError)
 	}
 
-	addTodo(form) {
+	addTodo(form, callBack) {
 		// WHAT IS THIS FOR???
 		let newTodo = new Todo ({
 			description: form.description.value
@@ -42,34 +42,38 @@ export default class TodoService {
 				todoList = res.data.data
 				// todo(todoList)
 				// this.getTodos(todoList)
-				 
+				 callBack()
 			})
 			.catch(logError)
 	}
 
-	toggleTodoStatus(todoId) {
+	toggleTodoStatus(todoId, value, callBack) {
 		// MAKE SURE WE THINK THIS ONE THROUGH
 		//STEP 1: Find the todo by its index **HINT** todoList
 
-		var todo = {} ///MODIFY THIS LINE
+		var todo = {
+			completed: value
+		} ///MODIFY THIS LINE
 
 		//STEP 2: Change the completed flag to the opposite of what is is **HINT** todo.completed = !todo.completed
 		todoApi.put(todoId, todo)
 			.then(function (res) {
 				//DO YOU WANT TO DO ANYTHING WITH THIS?
+			callBack()
 			})
 			.catch(logError)
 	}
 
-	removeTodo(todoId, getTodos) {
+	removeTodo(todoId, callBack) {
 		// Umm this one is on you to write.... The method is a DELETE
 		
 
 		todoApi.delete(todoId)
 			.then(function (res) {
 				todoList = res.data.data
+				callBack()
 			})
-			// .catch(logError)
+			.catch(logError)
 	}
 
 }
