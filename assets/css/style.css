@@ -15,17 +15,25 @@ body, html {
     z-index: -1
 }
 #quote {
+    display: flex;
+    justify-content: center;
     position: fixed;
-    left: 100px;
-    right: auto;
-    bottom:10px;
-    align-content: center
+    bottom: 10px;
+    /* left: 100px;
+    right: auto; */
+    
     /* left:0px;
     height:30px;
     width:100%;
     background:#999 */
 }
-/* #footer {
-    display: flex;
-    align-content: center
-} */
+#footer {
+    justify-content: center;
+    position: fixed;
+    left: 30px;
+    right: 30px;
+    bottom: 10px;
+    height: 100px;
+    /* width: 100%; */
+    /* background-color: transparent */
+   }

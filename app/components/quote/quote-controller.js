@@ -11,9 +11,8 @@ export default class QuoteController {
 	setQuote() {
 		//this is the line that invokes the getQuote function from the Service.
 		quoteService.getQuote(quote => {
-			document.getElementById("quote").innerHTML = `
-			<div>${quote.quote}</div>
-			<div> - ${quote.author}</div>
+			document.getElementById("footer").innerHTML = `
+			<h4>${quote.quote} - ${quote.author}</h4>
 			`
 			console.log('What is the quote', quote)
 		})
