@@ -11,33 +11,35 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
-<body id="body">
-    <div class="container">
-        <div id="background">
-            
+<body class="container" id="body">
+
+    <div id="background">
+
+    </div>
+    <div class="row">
+        <!-- <div class="background"> -->
+        <div class="col-sm-2" id="weather">
+            Your Weather Template
         </div>
-        <div class="row">
-            <!-- <div class="background"> -->
-            <div class="col-sm-2" id="weather">
-                Your Weather Template
-            </div>
-            <div class="col-sm-2 offset-sm-7 right-align" id="clock">
-                The clock
-            </div>
+        <div class="col-sm-2 offset-sm-7 right-align" id="clock">
+            The clock
         </div>
-        <div class="row">
+    </div>
+    <div class="row right">
+        <div class="card border-dark mb-3">
             <form id="todo-form" onsubmit="app.controllers.todoController.addTodoFromForm(event)">
                 <input type="text" name="description" placeholder="New Task">
                 <button id="todo-button" type="submit">SUBMIT</button>
             </form>
-            <div class="col-sm-4" id="todo">
+            <div class="row" id="todo">
                 The Todo List
             </div>
         </div>
-        <div class="row" id="footer" style="display: flex">
-
-        </div>
     </div>
+    <div class="row" id="footer" style="display: flex">
+
+    </div>
+
 
 
     <!--JS Libraries-->

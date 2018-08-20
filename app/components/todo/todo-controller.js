@@ -21,17 +21,24 @@ function draw(todos) {
 		const list = todos[i];
 		if (list.completed == false){
 			template += `
-			<div style="outline: 1px solid red">
-			<h4>${list.description}</h4><input type=checkbox id="checkbox" onclick="app.controllers.todoController.toggleTodoStatus('${list._id}', true)"><span>Completed</span>
+			<div class="col-sm-8">
+			<h4>${list.description}</h4>
+			<input type=checkbox id="checkbox" onclick="app.controllers.todoController.toggleTodoStatus('${list._id}', true)">
+			<span>Completed</span>
+			</div>
+			<div class="align col-sm-4">
 			<button name="delete" onclick="app.controllers.todoController.removeTodo('${list._id}')">Delete</button>
+			</div>
 			</div>
 			`
 		}
 		else {
 			template += `
-			<div style="outline: 1px solid red">
-			<h4 class="completed">${list.description}</h4><input type=checkbox id="checkbox" checked onclick="app.controllers.todoController.toggleTodoStatus('${list._id}', false)"><span>Completed</span>
-			<button name="delete" onclick="app.controllers.todoController.removeTodo('${list._id}')">Delete</button>
+			<div>
+			<h4 class="completed">${list.description}</h4>
+			<button class="right" name="delete" onclick="app.controllers.todoController.removeTodo('${list._id}')">Delete</button>
+			<input type=checkbox id="checkbox" checked onclick="app.controllers.todoController.toggleTodoStatus('${list._id}', false)">
+			<span>Completed</span>
 			</div>
 			`
 		}

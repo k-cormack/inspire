@@ -15,7 +15,7 @@ export default class WeatherController {
 		weatherService.getWeather(weather => {
 			document.getElementById("weather").innerHTML = `
 			<h2>${weather.name}</h2>
-			<p> ${weather.main.temp}</p>
+			<h2> ${weather.main.temp} &#8457</h2>
 			`
 
 			console.log("here is the weatherController", weather);
