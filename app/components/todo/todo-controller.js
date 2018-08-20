@@ -1,5 +1,5 @@
 import TodoService from "./todo-service.js";
-import Todo from "../../models/todo.js";
+
 
 
 
@@ -22,6 +22,7 @@ function draw(todos) {
 		template += `
 		<div style="outline: 1px solid red">
 		<h4>${list.description}</h4>
+		<button name="delete" onclick="app.controllers.todoController.removeTodo('${list._id}')">Delete</button>
 		</div>
 		`
 	}
@@ -73,7 +74,10 @@ export default class TodoController {
 
 	removeTodo(todoId) {
 		// ask the service to run the remove todo with this id
-
+		
 		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
+		console.log("remove Todo request")
+		todoService.removeTodo(todoId)
+		
 	}
 }

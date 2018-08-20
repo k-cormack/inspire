@@ -1,4 +1,4 @@
-.body, html {
+body, html {
     margin: 0;
     padding: 0;
     color: aliceblue;
@@ -6,10 +6,26 @@
 }
 
 .background {
-    min-height: 100%;
+    background-size: cover;
+    height: 100%;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: -1
 }
+#quote {
+    position: fixed;
+    left: 100px;
+    right: auto;
+    bottom:10px;
+    align-content: center
+    /* left:0px;
+    height:30px;
+    width:100%;
+    background:#999 */
+}
+/* #footer {
+    display: flex;
+    align-content: center
+} */

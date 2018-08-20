@@ -12,10 +12,12 @@ export default class ImageController {
         //this is the line that invokes the getImage function from the Service.
         imageService.getImage(image => {
             document.getElementById("background").innerHTML = `
-            <img src="${image.url}">
+            <img class="background" style="background-image: url('${image.url}')">
             `
-            
-            console.log(image)
+            // <img src="${image.url}">
+             
+
+                console.log(image)
         })
     }
 }

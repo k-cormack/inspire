@@ -6,35 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Be Inspired!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body id="body">
     <div class="container">
+        <div id="background">
+            
+        </div>
         <div class="row">
-            <div class="background">
-                <div id="background">
-                </div>
+            <!-- <div class="background"> -->
+            <div class="col-sm-2" id="weather">
+                Your Weather Template
+            </div>
+            <div class="col-sm-2 offset-sm-7 right-align" id="clock">
+                The clock
             </div>
         </div>
-        <div class="col-sm-2" id="weather">
-            Your Weather Template
+        <div class="row">
+            <form id="todo-form" onsubmit="app.controllers.todoController.addTodoFromForm(event)">
+                <input type="text" name="description" placeholder="New Task">
+                <button id="todo-button" type="submit">SUBMIT</button>
+            </form>
+            <div class="col-sm-2" id="todo">
+                A Todo List
+            </div>
         </div>
-
-        <div class="col-sm-2" id="quote">
-            The Quote
+        <div class="row" id="footer">
+            <div class="col-8" id="quote">
+                The Quote
+            </div>
+            <!-- </div> -->
         </div>
-        <div class="col-sm-2" id="clock">
-            The clock
-        </div>
-
-        <div class="col-sm-2" id="todo">
-            A Todo List
-        </div>
-        <form id="todo-form" onsubmit="app.controllers.todoController.addTodoFromForm(event)">
-            <input type="text" name="description" placeholder="New Task">
-            <button id="todo-button" type="submit">SUBMIT</button>
-        </form>
     </div>
 
 
